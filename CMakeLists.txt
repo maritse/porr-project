@@ -9,4 +9,6 @@ add_executable(porr_project main.cpp
         permutations.h
         tests.h
         des3.h
-        des3.cpp)
+        des3.cpp
+        fileEncryption.h
+        fileEncryption.cpp)

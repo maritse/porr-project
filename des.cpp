@@ -66,24 +66,24 @@ void DES::keygen(ui64 key)
     }
 }
 
-ui64 DES::des(ui64 block, bool decrypt)
+uint64_t DES::des(uint64_t block, bool decrypt)
 {
     // permutacja poczatkowa
     block = ip(block);
 
     // podzial bloku wejsciowego na lewa i prawa czesc po 32 bity
-    ui32 L = (ui32) (block >> 32) & L64_MASK;
-    ui32 R = (ui32) (block & L64_MASK);
+    uint32_t left = block >> 32;
+    uint32_t right = block & 0xFFFFFFFF;
 
     // 16 cykli feistela
-    for (ui8 i = 0; i < 16; i++)
+    for (uint8_t i = 0; i < 16; i++)
     {
-        ui32 F = decrypt ? f(R, sub_key[15-i]) : f(R, sub_key[i]);
-        feistel(L, R, F);
+        uint32_t F = decrypt ? f(right, sub_key[15-i]) : f(right, sub_key[i]);
+        feistel(left, right, F);
     }
 
     // zamiana prawej i lewej strony miejscami
-    block = (((ui64) R) << 32) | (ui64) L;
+    block = (static_cast<uint64_t>(right) << 32) | left;
 
     // permutacja koncowa
     return fp(block);
