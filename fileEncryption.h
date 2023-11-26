@@ -9,12 +9,14 @@ using namespace std;
 
 #include "des3.h"
 
-class FileEncryption
-{
+class FileEncryption {
 public:
-    FileEncryption(ui64 key);
+    FileEncryption(uint64_t key);
+
     int encrypt(string input, string output);
+
     int decrypt(string input, string output);
+
     int cipher(string input, string output, bool decrypt);
 
 private:
