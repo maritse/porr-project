@@ -22,14 +22,9 @@ public:
 
     uint64_t des(uint64_t block, bool decrypt);
 
-    uint64_t encrypt(uint64_t block);
+    virtual uint64_t encrypt(uint64_t block);
 
-    uint64_t decrypt(uint64_t block);
-
-    static uint64_t encrypt(uint64_t block, uint64_t key);
-
-    static uint64_t decrypt(uint64_t block, uint64_t key);
-
+    virtual uint64_t decrypt(uint64_t block);
 
 
 protected:

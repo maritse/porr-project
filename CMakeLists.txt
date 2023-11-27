@@ -10,5 +10,4 @@ add_executable(porr_project main.cpp
         tests.h
         des3.h
         des3.cpp
-        fileEncryption.h
-        fileEncryption.cpp)
+)

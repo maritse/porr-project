@@ -3,13 +3,13 @@
 
 #include "des.h"
 
-class DES3 {
+class DES3 : public DES {
 public:
-    DES3(uint64_t k1, uint64_t k2, uint64_t k3);
+    DES3(uint64_t key, uint64_t k1, uint64_t k2, uint64_t k3);
 
-    uint64_t encrypt(uint64_t block);
+    uint64_t encrypt(uint64_t block) override;
 
-    uint64_t decrypt(uint64_t block);
+    uint64_t decrypt(uint64_t block) override;
 
 private:
     DES des1;

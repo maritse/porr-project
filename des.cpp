@@ -1,5 +1,4 @@
 #include <iostream>
-#include <bitset>
 #include <sstream>
 #include <iomanip>
 
@@ -63,16 +62,6 @@ uint64_t DES::decrypt(uint64_t block) {
     return des(block, true);
 }
 
-uint64_t DES::encrypt(uint64_t block, uint64_t key) {
-    DES des(key);
-    return des.des(block, false);
-}
-
-uint64_t DES::decrypt(uint64_t block, uint64_t key) {
-    DES des(key);
-    return des.des(block, true);
-}
-
 void DES::keygen(uint64_t key) {
     // przygotowanie klucza - usuniecie bitow parzystosci
     uint64_t permuted_choice_1 = 0; // 56 bity
@@ -119,7 +108,7 @@ uint64_t DES::des(uint64_t block, bool decrypt) {
     }
 
     // zamiana prawej i lewej strony miejscami
-    block = ((uint64_t)right << 32) | left;
+    block = ((uint64_t) right << 32) | left;
 
     // permutacja koncowa
     return fp(block);

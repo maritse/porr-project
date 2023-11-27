@@ -28,7 +28,7 @@ void test2() {
 }
 
 void test3() {
-    DES3 des(0x51a264ae19b71531, 0xb95374ba8ddff8c1, 0x1234123412341234);
+    DES3 des(0, 0x51a264ae19b71531, 0xb95374ba8ddff8c1, 0x1234123412341234);
     uint64_t input = 0x1111111111111111;
 
     uint64_t result = des.encrypt(input);
