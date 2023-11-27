@@ -26,8 +26,6 @@ int FileEncryption::cipher(string input, string output, bool decrypt) {
 
     inFile.seekg(0, ios::beg);
 
-
-
 //    for (size_t i = 0; i < ciphertext.length(); i += 16) {
 //        string block = ciphertext.substr(i, 16);
 //        uint64_t encryptedBlock = des.hexToUint64(block);
@@ -38,16 +36,17 @@ int FileEncryption::cipher(string input, string output, bool decrypt) {
     while (inFile.read((char*) &buffer, blockSize)) {
         if (decrypt) {
             string decryptedText;
-            uint64_t encryptedBlock = des.hexToUint64(buffer);
-            uint64_t decryptedBlock = des.decrypt(encryptedBlock);
-            decryptedText += des.uint64ToString(decryptedBlock);
+//            uint64_t encryptedBlock = des.hexToUint64(buffer);
+//            uint64_t decryptedBlock = des.decrypt(encryptedBlock);
+//            decryptedText = des.uint64ToString(decryptedBlock);
+//            outFile << decryptedText;
 
         } else {
             string ciphertext;
             string block = des.padString(string(buffer));
             uint64_t encryptedBlock = des.encrypt(des.stringToUint64(block));
             printf("encryptedBlock (hex): %016lX\n", encryptedBlock);
-            outFile << std::hex <<(char*)&encryptedBlock;
+            outFile << std::hex << (char*)&encryptedBlock;
         }
 
 

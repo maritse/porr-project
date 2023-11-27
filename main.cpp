@@ -31,6 +31,7 @@ int main(int argc, char **argv) {
 
     string input = "/home/mati/domains.txt";
     string output = "/home/mati/domains.enc";
+    string decrypted = "/home/mati/domains.dec";
 //    if (argc > 3)
 //        input  = argv[3];
 //
@@ -44,7 +45,7 @@ int main(int argc, char **argv) {
     FileEncryption fe(key);
 
     fe.encrypt(input, output);
-
+//    fe.decrypt(output, decrypted);
 //    string s = "123456789";
 
 //    // szyfrowanie
