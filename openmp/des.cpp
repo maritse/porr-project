@@ -49,7 +49,7 @@ string DES::uint64ToString(uint64_t value) {
 string DES::uint64ToString(uint64_t value) {
     string result;
 
-    #pragma omp parallel for ordered num_threads(2)
+    #pragma omp parallel for ordered num_threads(4)
     for (int i = 0; i < 8; ++i) {
         char byte = static_cast<char>((value >> ((7 - i) * 8)) & 0xFF);
 
@@ -181,7 +181,7 @@ uint64_t DES::des(uint64_t block, bool decrypt) {
     uint32_t right = block & 0xFFFFFFFF;
 
     
-    #pragma omp parallel for ordered num_threads(2)
+    #pragma omp parallel for ordered num_threads(4)
     for (uint8_t i = 0; i < 16; i++) {
         uint32_t local_left, local_right;
 
